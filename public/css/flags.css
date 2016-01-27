@@ -1,0 +1,20 @@
+.texas .blue {
+	background-color: blue;
+	width: 200px;
+	height: 500px;
+	float: left;
+}
+
+.texas .white {
+	background-color: papayawhip;
+	width: 700px;
+	height: 250px;
+	float: left;
+}
+
+.texas .red {
+	background-color: red;
+	width: 700px;
+	height: 250px;
+	float: left;
+}

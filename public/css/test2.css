@@ -1,0 +1,27 @@
+* {
+	font-style: oblique;
+}
+
+h1, h2 {
+	color: red;
+	text-decoration: underline;
+}
+
+body {
+	background: whitesmoke;
+	background-image: url(/img/my_car.jpg);
+	background-repeat: no-repeat;
+}
+
+ol.food_list {
+	list-style-type: hebrew;
+}
+
+table {
+	padding: 20px;
+	font-size: 200%;
+}
+
+a:active {
+	color:purple;
+}

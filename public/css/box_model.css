@@ -1,0 +1,42 @@
+.boxes > div {
+	width: 150px;
+	height: 50px;
+	padding: 10px 10px;
+	border: 1px;
+	border-style: solid;
+	border-color: black;
+	margin: 10px;
+	color: white;
+	font-weight: bold;
+}
+
+.boxes .red {
+	margin: 0px;
+	background-color: #D84231;
+
+}
+
+.boxes .orange {
+	margin-left: 30px;
+	background-color: #EAAE33;
+}
+
+.boxes .yellow {
+	margin-left: 60px;
+	background-color: #FCF733;
+}
+
+.boxes .green {
+	margin-left: 90px;
+	background-color: #578C05;
+}
+
+.boxes .blue {
+	margin-left: 120px;
+	background-color: #234AFB;
+}
+
+.boxes .violet {
+	margin-left: 150px;
+	background-color: #DF8BF0;
+}

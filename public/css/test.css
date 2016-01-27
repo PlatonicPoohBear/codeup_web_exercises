@@ -1,0 +1,23 @@
+.user_login {
+
+	color: blue;
+	text-decoration: underline;
+}
+
+.compose_an_email {
+
+	color: papayawhip;
+	text-decoration: bold;
+}
+
+.multiple_choice_test_form {
+
+	color: burlywood;
+	text-decoration: italic
+}
+
+.yes_or_no {
+
+	color: maroon;
+	text-decoration: line-through;
+}
