@@ -1,7 +1,7 @@
 // ignore these lines for now
 // just know that the variable 'color' will end up with a random value from the colors array
 var colors = ['red', 'orange', 'yellow', 'green', 'blue', 'indigo', 'violet'];
-var color = colors[Math.floor(Math.random()*color.length)];
+var color = colors[Math.floor(Math.random()*colors.length)];
 
 var favorite = 'indigo'; // TODO: change this to your favorite color from the list
 
@@ -20,19 +20,19 @@ if (color=='red') {
 	console.log('...The blood of angry men!')
 }	
 
-	else if (color=='orange') {
+	else if (color==='orange') {
 		console.log('Orange is the color of an orange.')
 }	
 
-	else if (color=='yellow') {
+	else if (color==='yellow') {
 		console.log('Yellow is the color of snow.\n Wait...')
 }	
 
-	else if (color=='green') {
+	else if (color==='green') {
 		console.log('Green is the color of grass.')
 }	
 
-	else if (color=='blue') {
+	else if (color==='blue') {
 		console.log('Blue is the color of the sky.')
 }
 
@@ -41,4 +41,4 @@ if (color=='red') {
 	}
 
 
-color == (favorite) ? console.log('That\'s my favorite color') : console.log('That ain\'t my favorite color.')
+(color === favorite) ? console.log('That\'s my favorite color') : console.log('That ain\'t my favorite color.')
