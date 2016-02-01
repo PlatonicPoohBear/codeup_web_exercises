@@ -6,12 +6,34 @@
 	</head>
 	<body>
 		<script type="text/javascript">
-			var num = 2;
+		"use strict"
+			
+			var num = 1
 
-			do {
-				console.log(num);
-				num = num * 2;
-			} while (num<=65536)
+			while (num<=100){
+
+					var i = num - 1;
+					var remain = 1;
+
+						while (i>=1 && remain != 0) {
+							
+							if (num % i != 0) {
+								remain = 1
+							} else {
+								remain = 0
+							}
+							
+							i--
+						}
+
+						if (remain != 0) {
+							console.log(num)
+						}
+
+
+				num++
+			}
+			
 
 		</script>
 	</body>
