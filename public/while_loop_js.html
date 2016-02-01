@@ -12,24 +12,25 @@
 
 			while (num<=100){
 
-					var i = num - 1;
-					var remain = 1;
+					var i = 2;
 
-						while (i>=1 && remain != 0) {
+						while (i<=num) {
 							
-							if (num % i != 0) {
-								remain = 1
-							} else {
-								remain = 0
+							if (num == 1) {
+								break;
+							}
+
+							if (i == num) {
+								console.log(num);
+								break;
+							}
+
+							if (num % i == 0) {
+								break;
 							}
 							
-							i--
+							i++;
 						}
-
-						if (remain != 0) {
-							console.log(num)
-						}
-
 
 				num++
 			}

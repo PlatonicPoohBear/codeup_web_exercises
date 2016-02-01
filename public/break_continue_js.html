@@ -1,0 +1,40 @@
+<!doctype html>
+
+<html>
+	<head>
+		<title>Break Continue</title>
+	</head>
+	<body>
+		<script type="text/javascript">
+
+		"user strict"
+			var num
+			var minmax = 1
+			
+			      // infinite loop to generate random odd number
+			while (true){
+				num = Math.floor((Math.random()*50)+1)
+				if (num % 2 == 1) {
+					console.log("We'll be skipping " + num)
+					break;
+				}
+			}
+
+			
+			for (minmax; minmax <= 50; minmax++) {
+
+				if (minmax % 2 == 0) {
+					continue;
+				}
+
+				if (minmax == num) {
+					console.log("We don't talk about that number...")
+					continue;
+				}
+
+				console.log("Here is an odd number: " + minmax);
+			}
+
+			</script>
+	</body>
+</html>
