@@ -1,0 +1,78 @@
+<!doctype html>
+
+<html>
+	<head>
+		<title>Functions</title>
+	</head>
+	<body>
+		<script>
+
+			var myNameIs = 'Nick'; // todo: Fill in your name here.
+
+			function sayHello(name) {
+				console.log("Hello from " + name);
+				}
+
+			function isOdd(x) {
+				message = (x % 2 == 1) ? (x + " is an odd number.") : (x + " is an even number.");
+				console.log(message);
+			}
+
+			function sum(x, y) {
+				return x + y;
+
+			}
+
+			function diff(x, y) {
+				return x - y;
+			}
+
+			function multiply(x, y) {
+				return x * y;
+			}
+
+			function divide(x, y) {
+				return x / y;
+			}
+
+			function remainder(x, y) {
+				return x % y;
+			}
+
+			var random = Math.floor((Math.random()*100)+1);
+
+			sayHello(myNameIs);
+
+			isOdd(random);
+
+			console.log(sum(5, 7))
+
+			console.log(diff(40, 37))
+
+			console.log(multiply(5839, 4792))
+
+			console.log(divide(23467890, 34632))
+
+			console.log(remainder(4739, 2))
+
+			// todo:
+			// Create a function called 'sayHello' that takes a parameter 'name'.
+			// When called, the function should log a message that says hello from the passed in name.
+
+			// todo: Call the function 'sayHello' passing the variable 'myNameIs' as a parameter.
+
+			// do not worry about the details of this line
+			// just know that it generates a random number between 1 and 100
+			
+
+			// todo:
+			// Create a function called 'isOdd' that takes a number as a parameter.
+			// The function should use the ternary operator to log a message.
+			// The log should tell the number passed in and whether it is odd or not.
+
+			// todo: Call the function 'isOdd' passing the variable 'random' as a parameter.
+		</script>
+
+	</body>
+</html>
+
