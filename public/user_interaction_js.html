@@ -1,0 +1,42 @@
+<!doctype html>
+
+<html>
+	<head>
+		<title>User Interaction</title>
+	</head>
+	<body>
+		<script type="text/javascript">
+		"use strict"
+			
+			var username;
+			var pizza;
+
+			do {
+				username = prompt('What is your name?');
+
+				if (username != null) {
+					username = username.trim();
+				}
+			} while (username == null || username == "" || typeof username != "string")
+
+			alert('Welcome, ' + username + '!');
+
+
+			pizza = confirm('Do you like pizza?');
+
+			if (pizza === true) {
+				alert('Awesome! Me, too!');
+			} else if (pizza === false) {
+				alert('Whew! Me either.')
+			}
+
+		// todo: Ask the user for their name.
+		//       Keep asking if an empty input is provided.
+
+		// todo: Show an alert message that welcomes the user based on their input.
+
+		// todo: Ask the user if they like pizza.
+		//       Based on their answer show a creative alert message.
+		</script>
+	</body>
+</html>
