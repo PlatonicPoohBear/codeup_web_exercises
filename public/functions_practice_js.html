@@ -9,51 +9,72 @@
 
 			var myNameIs = 'Nick'; // todo: Fill in your name here.
 
+			function numcheck(input1, input2) {
+				if (isNaN(input1) || isNaN(input2)) {
+					console.log("Your input is not a number.");
+					return false;
+				} else {
+					return true;
+				}
+			}
+
 			function sayHello(name) {
 				console.log("Hello from " + name);
-				}
+			}
 
 			function isOdd(x) {
-				message = (x % 2 == 1) ? (x + " is an odd number.") : (x + " is an even number.");
+				if (numcheck(x)) {
+					message = (x % 2 == 1) ? (x + " is an odd number.") : (x + " is an even number.");
 				console.log(message);
+				}
 			}
 
 			function sum(x, y) {
-				return x + y;
-
+				if (numcheck(x, y)) {
+					return x + y;
+				}
 			}
 
 			function diff(x, y) {
+				if (numcheck(x, y)) {
 				return x - y;
+				}
 			}
 
 			function multiply(x, y) {
+				if (numcheck(x, y)) {
 				return x * y;
+				}
 			}
 
 			function divide(x, y) {
-				return x / y;
+				if (numcheck(x, y)) {
+					return x / y;
+				}
 			}
 
 			function remainder(x, y) {
-				return x % y;
+				if (numcheck(x, y)) {
+					return x % y;
+				}
 			}
 
 			var random = Math.floor((Math.random()*100)+1);
+			
 
 			sayHello(myNameIs);
+			
+			isOdd('monkey');
 
-			isOdd(random);
+			console.log(sum(34, 'MONKEY'));
 
-			console.log(sum(5, 7))
+			console.log(diff(473, 2349));
 
-			console.log(diff(40, 37))
+			console.log(multiply('boombam', 4930));
 
-			console.log(multiply(5839, 4792))
+			console.log(divide("papayawhip", 4930));
 
-			console.log(divide(23467890, 34632))
-
-			console.log(remainder(4739, 2))
+			console.log(remainder(2974, 'monkey'));
 
 			// todo:
 			// Create a function called 'sayHello' that takes a parameter 'name'.
