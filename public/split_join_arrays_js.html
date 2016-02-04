@@ -22,6 +22,16 @@
 			planetsAsArray = planetsAsString.split("|");
 			// todo: Split the 'planetsAsString' variable by pipes (|) to create a variable named 'planetsAsArray'.
 			console.log(planetsAsArray);
+
+			function joinArray(array, delim) {
+				if (typeof array == "object" && array != null && delim != undefined) {
+					return array.join(delim);
+				} else {
+					return 'Error';
+				}
+			}
+
+			console.log(joinArray(planetsAsArray, ','));
 		</script>
 	</body>
 </html>
