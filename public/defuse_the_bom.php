@@ -30,7 +30,7 @@
         {
             clearInterval(intervalID);
         }
-
+        
         // Don't modify anything below this line!
         //
         // This causes the defuseTheBOM() function to be called
