@@ -6,33 +6,32 @@
 	</head>
 	<body>
 		
-		<!-- Arrays will be tied to these fields -->
 
-		<textarea readonly>sample</textarea>
-		<textarea readonly>sample2</textarea>
-		<textarea readonly>sample3</textarea>
+		<textarea id = 'firstInputField' readonly></textarea>
+		<textarea id = 'operandField' readonly></textarea>
+		<textarea id = 'secondInputField' readonly></textarea>
 
 
 
 		<!-- Event listeners for each button. Put the restrictions on the field side (acceptable input), not the listener function side (deciding where to put output and what defines it as acceptable). Operand will shift to next field. -->
 
 		<!-- ID's for each button. -->
-		<button id = 'one' data-number = '1'>1</button>
-		<button id = 'two' data-number = '2'>2</button>
-		<button id = 'three' data-number = '3'>3</button>
-		<button id = 'four' data-number = '4'>4</button>
-		<button id = 'five' data-number = '5'>5</button>
-		<button id = 'six' data-number = '6'>6</button>
-		<button id = 'seven' data-number = '7'>7</button>
-		<button id = 'eight' data-number = '8'>8</button>
-		<button id = 'nine' data-number = '9'>9</button>
-		<button id = 'zero' data-number = '0'>0</button>
-		<button id = 'plus' data-operand = 'plus'>+</button>
-		<button id = 'minus' data-operand = 'minus'>-</button>
-		<button id = 'multiply' data-operand = 'multiply'>*</button>
-		<button id = 'divide' data-operand = 'divide'>/</button>
-		<button id = 'equals' data-equals = 'equals'>=</button>
-		<button id = 'clear' data-clear = 'clear'>C</button>
+		<button data-number = '1'>1</button>
+		<button data-number = '2'>2</button>
+		<button data-number = '3'>3</button>
+		<button data-number = '4'>4</button>
+		<button data-number = '5'>5</button>
+		<button data-number = '6'>6</button>
+		<button data-number = '7'>7</button>
+		<button data-number = '8'>8</button>
+		<button data-number = '9'>9</button>
+		<button data-number = '0'>0</button>
+		<button data-operand = '+'>+</button>
+		<button data-operand = '-'>-</button>
+		<button data-operand = '*'>*</button>
+		<button data-operand = '/'>/</button>
+		<button data-equals = 'equals'>=</button>
+		<button data-clear = 'clear'>C</button>
 
 		
 
@@ -41,170 +40,107 @@
 
 		<script type="text/javascript">
 
+			var firstInputField = document.getElementById('firstInputField');
+			var operandField = document.getElementById('operandField');
+			var secondInputField = document.getElementById('secondInputField');
 			var firstArray = [];
 			var secondArray = [];
-			// var operand;
-			// var field1 = [];
-			// var field2 = [];
-			// var field3 = [];
-
-
-
+			var firstField;
+			var secondField;
+			var operandClicked = false;
+			var equalClicked = false;
+			var operand;
+			var solution;
 			var test = document.getElementsByTagName('button');
+			
 
+			
 			var listenerTest = function(event) {
 				// Inputs appropriate value into field.
 
-				if (typeof firstArray != 'number'){
+				if (operandClicked == false && event.target.hasAttribute('data-number')){
+					number = event.target.getAttribute('data-number');
+					firstArray.push(number);
+					firstField = parseInt(firstArray.join(''));
+					console.log(firstField);
+					firstInputField.value = firstField;
+				}
 
-					if (event.target.hasAttribute('data-number')) {
-						number = event.target.getAttribute('data-number');
-						firstArray.push(number);
-						console.log(firstArray);
+
+				if (operandClicked == true && event.target.hasAttribute('data-number')) {
+					number = event.target.getAttribute('data-number');
+					secondArray.push(number);
+					secondField = parseInt(secondArray.join(''));
+					secondInputField.value = secondField;
+					console.log(secondField);
+				}
+
+
+				if (firstField != undefined && operandClicked == false && event.target.hasAttribute('data-operand')) {
+					operand = event.target.getAttribute('data-operand');
+					firstArray = [];
+					operandClicked = true;
+					operandField.value = operand;
+					console.log(operand);
+					// console.log(operand);
+				}
+
+				if (secondField != undefined && equalClicked == false && event.target.hasAttribute('data-equals')) {
+					secondArray = [];
+
+					if (operand == '+') {
+						solution = firstField + secondField;
+						console.log(solution);
 					}
-				}
 
-				if (typeof firstArray == 'number') {
-
-					if (event.target.hasAttribute('data-number')) {
-						number = event.target.getAttribute('data-number');
-						secondArray.push(number);
-						console.log(secondArray);
+					if (operand == '-') {
+						solution = firstField - secondField;
+						console.log(solution);
 					}
 
+					if (operand == '*') {
+						solution = firstField * secondField;
+						console.log(solution);
+					}
+
+					if (operand == '/') {
+						solution = firstField / secondField;
+						console.log(solution);
+					}
+
+					operandField.value = ' ';
+					secondInputField.value = ' ';
+					firstField = solution;
+					firstInputField.value = firstField;
+					secondField = undefined;
+					equalClicked = false;
+					operandClicked = false;
+					console.log(firstField);
 				}
 
-				if (firstArray[0] != undefined && event.target.hasAttribute('data-operand')) {
-					firstArray = parseInt(firstArray.join(''));
-					console.log(firstArray);
-				}
+				if (event.target.hasAttribute('data-clear')) {
 
-				if (secondArray[0] != undefined && event.target.hasAttribute('data-equals')) {
-					secondArray = parseInt(secondArray.join(''));
-					console.log(secondArray);
+					firstInputField.value = ' ';
+					operandField.value = ' ';
+					secondInputField.value = ' ';
+					firstArray = [];
+					secondArray = [];
+					firstField = undefined;
+					secondField = undefined;
+					operandClicked = false;
+					equalClicked = false;
+					operand = undefined;
+					solution = undefined;
+
 				}
 			};
-
-			
 
 
 
 			// Have all events trigger the same function.
-
 			for(i = 0; i < test.length; i++) {
 				test[i].addEventListener('click', listenerTest);
 			}
-
-
-			
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-			// document.getElementById('one').addEventListener('click', listenerTest);
-
-
-			// document.getElementById('two').addEventListener('click', function(){
-			// 	return 2;
-			// });
-
-			
-			// document.getElementById('three').addEventListener('click', function(){
-			// 	return 3;
-			// });
-
-			
-			// document.getElementById('one').addEventListener('click', function(){
-			// 	return 1;
-			// });
-
-
-			// document.getElementById('four').addEventListener('click', function(){
-			// 	return 4;
-			// });
-
-
-			// document.getElementById('five').addEventListener('click', function(){
-			// 	return 5;
-			// });
-
-
-			// document.getElementById('six').addEventListener('click', function(){
-			// 	return 6;
-			// });
-
-
-			// document.getElementById('seven').addEventListener('click', function(){
-			// 	return 7;
-			// });
-
-
-			// document.getElementById('eight').addEventListener('click', function(){
-			// 	return 8;
-			// });
-
-
-			// document.getElementById('nine').addEventListener('click', function(){
-			// 	return 9;
-			// });
-
-
-			// document.getElementById('zero').addEventListener('click', function(){
-			// 	return 0;
-			// });
-
-
-			// document.getElementById('plus').addEventListener('click', function(){
-			// 	return '+';
-			// });
-
-
-			// document.getElementById('minus').addEventListener('click', function(){
-			// 	return '-';
-			// });
-
-
-			// document.getElementById('multiply').addEventListener('click', function(){
-			// 	return '*';
-			// });
-
-
-			// document.getElementById('divide').addEventListener('click', function(){
-			// 	return '/';
-			// });
-
-
-			// document.getElementById('equals').addEventListener('click', function(){
-			// 	return '=';
-			// });
-
-
-			// document.getElementById('clear').addEventListener('click', function(){
-			// 	return 'clear';
-			// });
 
 		</script>
 	</body>
