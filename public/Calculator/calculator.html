@@ -1,0 +1,40 @@
+<!doctype html>
+
+<html>
+	<head>
+		<title>Assemble</title>
+	</head>
+	<body>
+		
+
+		<textarea id = 'firstInputField' readonly></textarea>
+		<textarea id = 'operandField' readonly></textarea>
+		<textarea id = 'secondInputField' readonly></textarea>
+
+
+
+		<!-- Event listeners for each button. Put the restrictions on the field side (acceptable input), not the listener function side (deciding where to put output and what defines it as acceptable). Operand will shift to next field. -->
+
+		<!-- ID's for each button. -->
+		<button data-number = '1'>1</button>
+		<button data-number = '2'>2</button>
+		<button data-number = '3'>3</button>
+		<button data-number = '4'>4</button>
+		<button data-number = '5'>5</button>
+		<button data-number = '6'>6</button>
+		<button data-number = '7'>7</button>
+		<button data-number = '8'>8</button>
+		<button data-number = '9'>9</button>
+		<button data-number = '0'>0</button>
+		<button data-operand = '+'>+</button>
+		<button data-operand = '-'>-</button>
+		<button data-operand = '*'>*</button>
+		<button data-operand = '/'>/</button>
+		<button data-equals = 'equals'>=</button>
+		<button data-clear = 'clear'>C</button>
+
+
+		<script type="text/javascript" src="/Calculator/calculator.js"></script>
+
+	</body>
+</html>
