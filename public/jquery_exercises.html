@@ -5,12 +5,31 @@
 		<title>JQuery Exercises</title>
 	</head>
 	<body>
+		<h1 id = 'h1' class = 'important'>This is an h1.</h1>
+		<p id = 'para' class = 'important' 'less_important'>And this is a paragraph. It has an unordered list within it.
+			<ul id = 'list'>
+				<li id = 'item' class = 'item'>A list item.</li>
+				<li class = 'item'>Another list item.</li>
+				<li class = 'item'>A third list item.</li>
+			</ul>
+		</p>
+
+		<div id = 'divvy' class = 'wala' 'octothorp'>Aaaaaaand a div. Wala-wala.</div>
+
+
+
 		<script type="text/javascript" src="/JS/jquery-1.12.0.js"></script>
 		
 		<script>
-			$(document).ready(function() {
+			jQuery(document).ready(function() {
 			    alert( 'The DOM has finished loading!' );
 			});
+
+			alert($('#h1').html());
+
+			alert($('#divvy').html());
+
+			alert($('#item').html());
 		</script>
 
 	</body>
