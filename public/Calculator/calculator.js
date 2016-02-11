@@ -19,13 +19,14 @@ var test = document.getElementsByTagName('button');
 var listenerTest = function(event) {
 	
 
-		// This is the if condition for input in the first field. It includes nested if conditions for decimals, sign change, and starting zero's.
+		// This is the if condition for input in the first field. 
+		// It includes nested if conditions for decimals, sign change, and starting zero's.
 
 
 		if (operandClicked == false && event.target.hasAttribute('data-number')){
 			number = event.target.getAttribute('data-number');
 			firstArray.push(number);
-			
+			console.log(firstArray);
 		
 			if (event.target.hasAttribute('data-decimal') && decimalCount1 != 0) {
 				firstArray.pop(number);
@@ -63,7 +64,8 @@ var listenerTest = function(event) {
 	
 
 
-// This is the if condition for input in the second field. It includes nested if conditions for decimals, sign change, and starting zero's.
+// This is the if condition for input in the second field. 
+// It includes nested if conditions for decimals, sign change, and starting zero's.
 
 
 	if (operandClicked == true && event.target.hasAttribute('data-number')) {
@@ -106,7 +108,8 @@ var listenerTest = function(event) {
 
 
 
-// This is the if condition for input for the operator field. Resets the first array and "signClicked", sets "operandClicked" to true, and assigns
+// This is the if condition for input for the operator field. 
+// Resets the first array and "signClicked", sets "operandClicked" to true, and assigns
 // "operand" the string of the operation that was input. This will be used to trigger the appropriate condition later.
 
 
@@ -123,9 +126,9 @@ var listenerTest = function(event) {
 
 
 
-// This is the if condition for the "equals" sign. It can only be triggered if the second field has some value, and if "equals" hasn't
-// been clicked yet. Resets the value of the second and operation fields, displays the solution in the first field, resets "equalClicked", "operandClicked",
-// and both "decimalCount"'s.
+// This is the if condition for the "equals" sign. It can only be triggered if the second field has some value, 
+// and if "equals" hasn't been clicked yet. Resets the value of the second and operation fields, 
+// displays the solution in the first field, resets "equalClicked", "operandClicked", and both "decimalCount"'s.
 
 
 	if (secondField != undefined && equalClicked == false && event.target.hasAttribute('data-equals')) {
