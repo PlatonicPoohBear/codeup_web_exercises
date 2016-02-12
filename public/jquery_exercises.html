@@ -8,9 +8,9 @@
 		<h1 id = 'h1' class = 'important'>This is an h1.</h1>
 		<p id = 'para' class = 'important' 'less_important'>And this is a paragraph. It has an unordered list within it.
 			<ul id = 'list'>
-				<li id = 'item' class = 'item'>A list item.</li>
-				<li class = 'item'>Another list item.</li>
-				<li class = 'item'>A third list item.</li>
+				<li id = 'codeup' class = 'bang'>A list item.</li>
+				<li class = 'codeup'>Another list item.</li>
+				<li class = 'codeup'>A third list item.</li>
 			</ul>
 		</p>
 
@@ -21,15 +21,34 @@
 		<script type="text/javascript" src="/JS/jquery-1.12.0.js"></script>
 		
 		<script>
-			jQuery(document).ready(function() {
-			    alert( 'The DOM has finished loading!' );
-			});
+			
+				$('h1').click(function() {
+					$('h1').css({
+						'background-color' : 'red'
+					})
+					
+				});
 
-			alert($('#h1').html());
+				$('p').dblclick(function() {
+					$('p').css({
+						'font-size' : '18px'
+					})
+				});
 
-			alert($('#divvy').html());
+				$('li').hover(
+					function() {
+						$('li').css({
+							'color' : 'red'
+						})
+					},
 
-			alert($('#item').html());
+					function() {
+						$('li').css({
+							'color' : 'white'
+						})
+					}
+				);
+			
 		</script>
 
 	</body>

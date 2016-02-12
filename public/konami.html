@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Konami Code</title>
+</head>
+<body>
+    <h1>Konami Code</h1>
+
+    <script type="text/javascript" src="/JS/jquery-1.12.0.js"></script>
+    <script>
+        "use strict";
+
+        var charCodeArray = [];
+        var charCount = 0;
+        
+        $(document).keyup(function(event){
+            charCodeArray.push(event.keyCode);
+            charCount++;
+
+            if (charCount > 11) {
+            	charCodeArray.shift();
+            	charCount--;
+            }
+
+            if (charCodeArray.join('') == '3838404037393739666513') {
+            	alert('You have added thirty lives!');
+            }
+
+        });
+    </script>
+</body>
+</html>
