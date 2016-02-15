@@ -35,6 +35,51 @@
 	
 	</dl>
 
+	<ul>
+		<li><h3>Thing 1</h3></li>
+
+		<ul>
+		
+			<li>fact 1</li>
+			<li>fact 2</li>
+			<li>fact 3</li>
+			<li>fact 4</li>
+
+		</ul>
+
+	</ul>
+	
+
+	<ul>
+		<li><h3>Thing 2</h3></li>
+
+		<ul>
+		
+			<li>fact 1</li>
+			<li>fact 2</li>
+			<li>fact 3</li>
+			<li>fact 4</li>
+
+		</ul>
+
+	</ul>
+
+
+	<ul>
+		<li><h3>Thing 3</h3></li>
+
+		<ul>
+		
+			<li>fact 1</li>
+			<li>fact 2</li>
+			<li>fact 3</li>
+			<li>fact 4</li>
+
+		</ul>
+
+	</ul>
+
+
 
 	<a id='anchor' href="">Wala</a>
 
@@ -45,8 +90,16 @@
 		$('#anchor').click(function(event) {
 			event.preventDefault();
 			$('dl dd').toggleClass('invisible');
-			console.log('something')
 		});
+
+
+		$('ul').each(function(index, element){
+			$(element).children().first().css('font-weight', 'bold');
+		})
+
+		$('li').click(function(event) {
+			$(this).parent().addClass('invisible');
+		})
 
 	</script>
 </body>
