@@ -89,7 +89,7 @@
 
 		$('#anchor').click(function(event) {
 			event.preventDefault();
-			$('dl dd').toggleClass('invisible');
+			$('dl dd').toggle();
 		});
 
 
@@ -98,7 +98,7 @@
 		})
 
 		$('li').click(function(event) {
-			$(this).parent().addClass('invisible');
+			$(this).parent().hide();
 		})
 
 	</script>
