@@ -1,0 +1,53 @@
+<html>
+<head>
+	<title>JQuery Faq</title>
+
+	<style type="text/css">
+
+		.invisible {
+			display: none;
+		}
+	</style>
+</head>
+<body>
+	<dl>
+
+		<dt>1</dt>
+		<dd class = 'invisible'>test1</dd>
+		<dt>2</dt>
+		<dd class = 'invisible'>test2</dd>
+		<dt>3</dt>
+		<dd class = 'invisible'>test3</dd>
+		<dt>4</dt>
+		<dd class = 'invisible'>test4</dd>
+		<dt>5</dt>
+		<dd class = 'invisible'>test5</dd>
+		<dt>6</dt>
+		<dd class = 'invisible'>test6</dd>
+		<dt>7</dt>
+		<dd class = 'invisible'>test7</dd>
+		<dt>8</dt>
+		<dd class = 'invisible'>test8</dd>
+		<dt>9</dt>
+		<dd class = 'invisible'>test9</dd>
+		<dt>10</dt>
+		<dd class = 'invisible'>test10</dd>
+	
+	</dl>
+
+
+	<a id='anchor' href="">Wala</a>
+
+
+	<script type="text/javascript" src="/JS/jquery-1.12.0.js"></script>
+	<script type="text/javascript">
+
+		$('#anchor').click(function(event) {
+			event.preventDefault();
+			$('dl dd').toggleClass('invisible');
+			console.log('something')
+		});
+
+	</script>
+</body>
+</html>
