@@ -1,0 +1,59 @@
+<!doctype html>
+
+<html>
+	<head>
+		<title>Weather Map</title>
+	</head>
+	<body>
+		<div id="display"></div>
+
+		<button id="refresh">Refresh</button>
+
+		<script type="text/javascript" src="/JS/jquery-1.12.0.js"></script>
+		<script type="text/javascript">
+			
+			$(document).ready(function() {
+				
+				function initialze() {
+					$.ajax({
+						url: 'http://api.openweathermap.org/data/2.5/forecast/daily',
+						type: 'GET',
+						data: {
+							APPID: '5b1dd6f86af7ef4449319fcd5391a5f5',
+							q: 'San Antonio, TX',
+							cnt: '3',
+							units: 'imperial'
+						}
+					}).done(function(data) {
+						console.log(data);
+						
+						var content = '<h3>' + data.city.name + '</h3>';
+						
+						data.list.forEach(function(element, index, array) {
+							content += '<p>' + element.clouds + '</p>';
+							content += '<p>' + element.humidity + '</p>';
+							content += '<p>' + element.pressure + '</p>';
+							content += '<p>' + element.speed + '</p>';
+							content += '<p>' + element.temp.max + '</p><br><br>';
+
+						});
+						
+
+						$('#display').append(content);
+					});
+						
+					
+				};
+
+				function refresh() {
+					$('#display').html('');
+					initialze();
+				};
+
+				initialze();
+				$('#refresh').click(refresh);
+
+			});
+		</script>
+	</body>
+</html>

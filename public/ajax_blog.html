@@ -1,0 +1,43 @@
+<!doctype html>
+
+<html>
+	<head>
+		<title>Ajax Blog</title>
+	</head>
+	<body>
+		<div id='posts'></div>
+
+		<button id="refresh">Refresh</button>
+
+		<script type="text/javascript" src="/JS/jquery-1.12.0.js"></script>
+		<script type="text/javascript">
+			
+			$(document).ready(function() {
+				
+				function initialze() {
+					$.ajax({
+						url: '/Data/blog.json',
+						type: 'GET'
+					}).done(function(data) {
+						var content = '';
+						data.forEach(function(element, index, array) {
+							content += '<h3>' + element.title + '</h3>';
+								content += '<h5> ' + element.date + '</h5>';
+									content += '<p>' + element.content + '</p>';
+						});
+						$('#posts').append(content);
+					});
+				};
+
+				function refresh() {
+					$('#posts').html('');
+					initialze();
+				};
+
+				initialze();
+				$('#refresh').click(refresh);
+
+			});
+		</script>
+	</body>
+</html>
