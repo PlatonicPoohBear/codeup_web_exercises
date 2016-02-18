@@ -1,7 +1,3 @@
-// $.ajax('/Random_Word_Generator/random_word_array.json').done(function(data) {
-// 	console.log(data);
-// })
-
 
 function getRandomWord(callback) {
 	$.ajax({
@@ -21,10 +17,10 @@ function getRandomWord(callback) {
 // https://developers.google.com/youtube/terms
 
 // Helper function to display JavaScript value on HTML page.
-function showResponse(response) {
-    var responseString = JSON.stringify(response, '', 2);
-    document.getElementById('response').innerHTML += responseString;
-}
+// function showResponse(response) {
+//     var responseString = JSON.stringify(response, '', 2);
+//     document.getElementById('response').innerHTML += responseString;
+// }
 
 // Called automatically when JavaScript client library is loaded.
 function onClientLoad() {
@@ -45,7 +41,8 @@ function search(searchTerm) {
     // Use the JavaScript client library to create a search.list() API call.
     var request = gapi.client.youtube.search.list({
         part: 'snippet',
-        q: searchTerm
+        q: searchTerm,
+        type: 'video'
         // Try using partial id's.   "id: 'gh93'"
 
         
@@ -59,6 +56,20 @@ function search(searchTerm) {
 
 // Called automatically with the response of the YouTube API request.
 function onSearchResponse(response) {
-    showResponse(response);
-}
+    var video;
+    response.items.forEach(function (element, index, array) {
+        var idArray = [];
+        idArray.push(element.id.videoId);
+        video = idArray[Math.floor(Math.random() * idArray.length)];
+        video = 'https://www.youtube.com/embed/' + video + '?autoplay=1';
+
+    });
+    $('#playerWrapper').html("<iframe id ='player' width='640' height='390' src='" + video + "'></iframe>");
+};
+
+$('#refresh').click(function() {
+    onClientLoad();
+})
+
+
 

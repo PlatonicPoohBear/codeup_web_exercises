@@ -6,16 +6,42 @@
 
 		<link rel="stylesheet" type="text/css" href="/CSS/bootstrap_css/bootstrap.css"><style type="text/css">
 
+			body {
+				background-color: black;
+			}
+
 			#map-canvas {
 	            width: 500px;
 	            height: 500px;
+	        }
+
+	        #header {
+	        	height: 50px;
+	        	background-color: #33A539;
+	        }
+
+	        #display0 {
+	        	background-color: salmon;
+	        	height: 140px;
+	        }
+
+	        #display1 {
+	        	background-color: aquamarine;
+	        	height: 140px;
+	        }
+
+	        #display2 {
+	        	background-color: papayawhip;
+	        	height: 140px;
 	        }
 	    </style>
 	</head>
 	<body>
 
 		<div class='container'>
-			<h3 id='cityName'></h3>
+			<div id='header'>	
+				<h3 id='cityName'></h3>
+			</div>
 			<div class='row'>
 				<div id="display0" class='col-md-4'></div>
 				<div id="display1" class='col-md-4'></div>
@@ -68,11 +94,11 @@
 						$('#cityName').html(data.city.name);
 						
 						data.list.forEach(function(element, index, array) {
-							content += '<table><tr>' + element.clouds + '</tr><br>';
-							content += '<tr>' + element.humidity + '</tr><br>';
-							content += '<tr>' + element.pressure + '</tr><br>';
-							content += '<tr>' + element.speed + '</tr><br>';
-							content += '<tr>' + element.temp.max + '</tr><br></table>';
+							content += '<table><tr>Cloud coverage: ' + element.clouds + '</tr><br>';
+							content += '<tr>Humidity: ' + element.humidity + '</tr><br>';
+							content += '<tr>Atmospheric pressure: ' + element.pressure + '</tr><br>';
+							content += '<tr>Wind speed: ' + element.speed + '</tr><br>';
+							content += '<tr>High: ' + element.temp.max + '</tr><br></table>';
 
 							$('#display' + index).append(content);
 							console.log('display' + index, content);
@@ -113,6 +139,15 @@
 
 				  			// Setting event listener on marker drag
 				  	marker.addListener('dragend', function() {
+						map.setZoom(4);
+						map.setCenter(marker.getPosition());
+						lat = marker.position.lat();
+						lon = marker.position.lng();
+						submit(lat, lon);
+
+					});
+
+					marker.addListener('click', function() {
 						map.setZoom(4);
 						map.setCenter(marker.getPosition());
 						lat = marker.position.lat();
