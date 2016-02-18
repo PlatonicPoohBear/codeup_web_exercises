@@ -47,6 +47,8 @@
 			// Init geocoder object
 			var geocoder = new google.maps.Geocoder();
 
+			var marker;
+
 			// Geocode our address
 			geocoder.geocode({ "address": address }, function(results, status) {
 
@@ -61,17 +63,20 @@
 			       alert("Geocoding was not successful - STATUS: " + status);
 			   }
 
-			  	var marker = new google.maps.Marker({
+			  	marker = new google.maps.Marker({
 					position: results[0].geometry.location,
-					map: map
+					map: map,
+					draggable: true
 				});
 
-				var infoWindow = new google.maps.InfoWindow({
-			    	content: "The Houston garage. There's always good stuff here."
+			  	marker.addListener('dragend', function() {
+					map.setZoom(8);
+					map.setCenter(marker.getPosition());
 				});
-			
-				infoWindow.open(map, marker);
+				
 			});
+
+			
 	   
 	    })();
 	    </script>
