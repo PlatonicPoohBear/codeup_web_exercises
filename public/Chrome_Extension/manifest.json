@@ -11,6 +11,6 @@
   },
   "permissions": [
     "activeTab",
-    "https://www.googleapis.com/youtube/v3/search"
+    "https://apis.google.com/js/client.js"
   ]
 }
