@@ -10009,7 +10009,6 @@
         // Selects a random word from the array of terms, and passes to callback function ('search').
     function getRandomWord(callback) {
         var word = array[Math.floor(Math.random() * array.length)];
-        console.log(word);
         callback(word);
     };
 
