@@ -35,6 +35,6 @@ $name = makeName(getRandom($nounArray, $adjectiveArray));
 		<title>Server Name</title>
 	</head>
 	<body>
-		<h1><?php echo $name?></h1>
+		<h1><?= $name?></h1>
 	</body>
 </html>
