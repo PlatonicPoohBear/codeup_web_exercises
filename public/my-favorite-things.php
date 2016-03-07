@@ -1,7 +1,17 @@
 <?php 
 
 
-$array = ['Stuff', 'Things', 'Other things', 'Running out of words', 'Thingies'];
+function pageController() {
+	
+	$array = ['Stuff', 'Things', 'Other things', 'Running out of words', 'Thingies'];
+	$data = [];
+	$data['array'] = ['Stuff', 'Things', 'Other things', 'Running out of words', 'Thingies'];
+
+	return $data;
+
+}
+
+extract(pageController());
 
  ?>
 
