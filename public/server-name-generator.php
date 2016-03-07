@@ -1,11 +1,6 @@
 <?php 
 
 
-$nounArray = ['Tree', 'Bear', 'Wolf', 'Pedro', 'Pidgeon', 'Dog', 'Flower', 'Bull', 'Fox', 'Horse'];
-
-$adjectiveArray = ['Happy', 'Flaming', 'Flying', 'Screaming', 'Dancing', 'Soggy', 'Kicking', 'Running', 'Flailing', 'Many'];
-
-
 function getRandom($nounArray, $adjectiveArray) {
 	$tempNoun = $nounArray[rand(0, 9)];
 	$tempAdjective = $adjectiveArray[rand(0, 9)];
@@ -23,7 +18,16 @@ function makeName($array) {
 }
 
 
-$name = makeName(getRandom($nounArray, $adjectiveArray));
+function pageController() {
+	$nounArray = ['Tree', 'Bear', 'Wolf', 'Pedro', 'Pidgeon', 'Dog', 'Flower', 'Bull', 'Fox', 'Horse'];
+	$adjectiveArray = ['Happy', 'Flaming', 'Flying', 'Screaming', 'Dancing', 'Soggy', 'Kicking', 'Running', 'Flailing', 'Many'];$data = [];
+	
+	$data['name'] = makeName(getRandom($nounArray, $adjectiveArray));
+	return $data;
+}
+
+extract(pageController());
+
 
 ?>
 
