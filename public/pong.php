@@ -1,11 +1,11 @@
 <?php 
 
-
+require 'functions.php';
 function pageController() {
 
-	if (isset($_GET['counter'])) {
-		$counter = $_GET['counter'];
-	} elseif (isset($_GET['miss']) && $_GET['miss'] == true) {
+	if (inputHas('counter')) {
+		$counter = inputGet('counter');
+	} elseif (inputHas('miss') && inputGet('miss') == true) {
 		$counter = 0;
 	} else {
 		$counter = 0;

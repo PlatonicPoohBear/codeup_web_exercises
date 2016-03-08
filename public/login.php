@@ -1,5 +1,7 @@
 <?php 
 
+	require 'functions.php';
+
 	$username = 'Nick';
 	$password = 'wala';
 	$message = 'User Login';
@@ -11,9 +13,9 @@
 		exit;
 	}
 
-	if (isset($_POST['username']) && isset($_POST['password'])) {
+	if (inputHas('username') && inputHas('password')) {
 
-		if ($_POST['username'] == $username && $_POST['password'] == $password) {
+		if (inputGet('username') == $username && inputGet('password') == $password) {
 
 			$sessionId = session_id();
 
