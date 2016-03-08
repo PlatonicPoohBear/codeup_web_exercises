@@ -2,7 +2,7 @@
 
 session_start();
 
-if (!isset($_SESSION['logged_in_user'])) {
+if (!isset($_SESSION['logged_in_user']) || $_SESSION['logged_in_user'] == '') {
 		header("Location: http://codeup.dev/login.php");
 		exit;
 	}
