@@ -4,9 +4,21 @@
 	$password = 'wala';
 	$message = 'User Login';
 
+	session_start();
+
+	if (isset($_SESSION['logged_in_user']) && $_SESSION['logged_in_user'] == $username) {
+		header("Location: http://codeup.dev/authorized.php");
+		exit;
+	}
+
 	if (isset($_POST['username']) && isset($_POST['password'])) {
 
 		if ($_POST['username'] == $username && $_POST['password'] == $password) {
+
+			$sessionId = session_id();
+
+			$_SESSION['logged_in_user'] = $username;
+
 			header("Location: http://codeup.dev/authorized.php");
 
 			exit;
@@ -14,7 +26,6 @@
 			$message = "Login failed.";
 		}
 	}
-
 
  ?>
 
