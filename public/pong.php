@@ -1,11 +1,12 @@
 <?php 
 
 require 'functions.php';
+require '../Input.php';
 function pageController() {
 
-	if (inputHas('counter')) {
-		$counter = inputGet('counter');
-	} elseif (inputHas('miss') && inputGet('miss') == true) {
+	if (Input::has('counter')) {
+		$counter = Input::get('counter');
+	} elseif (Input::has('miss') && Input::get('miss') == true) {
 		$counter = 0;
 	} else {
 		$counter = 0;
