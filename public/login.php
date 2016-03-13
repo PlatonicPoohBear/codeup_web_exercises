@@ -1,33 +1,25 @@
 <?php 
 
-	require 'functions.php';
+	require '../Input.php';
+	require '../Auth.php';
 
-	$username = 'Nick';
-	$password = 'wala';
+
+	$username = Input::get('username');
+	$password = Input::get('password');
 	$message = 'User Login';
 
 	session_start();
 
-	if (isset($_SESSION['logged_in_user']) && $_SESSION['logged_in_user'] == $username) {
+	if (Auth::check()) {
+		
 		header("Location: http://codeup.dev/authorized.php");
-		exit;
+		
+	} elseif (Input::has('username') && Input::has('password')) {
+
+		Auth::attempt($username, $password);
+	
 	}
-
-	if (inputHas('username') && inputHas('password')) {
-
-		if (inputGet('username') == $username && inputGet('password') == $password) {
-
-			$sessionId = session_id();
-
-			$_SESSION['logged_in_user'] = $username;
-
-			header("Location: http://codeup.dev/authorized.php");
-
-			exit;
-		} else {
-			$message = "Login failed.";
-		}
-	}
+	
 
  ?>
 
