@@ -1,6 +1,7 @@
 <?php 
 
-
+	// These should be defined in a configuration directory, not in a file
+	// within the public directory
 define('DB_HOST', '127.0.0.1');
 
 define('DB_NAME', 'parks_db');
