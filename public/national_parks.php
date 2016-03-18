@@ -12,12 +12,15 @@ define('DB_PASS', 'parks_user');
 require '../db_connect.php';
 require '../Input.php';
 
+
 $offset = 0;
 
 if (Input::has('page')) {
-	$offset = intval(Input::get('page'));
-	$offset -= 1;
-	$offset = $offset * 4;
+	$page = intval(Input::get('page'));
+	$page = $page - 1;
+	$offset = $page * 4;
+} else {
+	$page = 0;
 }
 
 $stmt = $dbc->query(
@@ -44,8 +47,16 @@ $parks = $stmt->fetchAll(PDO::FETCH_ASSOC);
 	 		<br><br>
 	 	<?php } ?>	
 
-	 	<a href="?page=1">Page 1</a>
-	 	<a href="?page=2">Page 2</a>
-	 	<a href="?page=3">Page 3</a>
+	 	<?php if ($page > 0) { ?>
+	 		<?php echo "<a href=?page=" . $page . ">Previous page</a>"; ?>
+	 	<?php } ?>
+	 	
+	 	<?php if ($page < 2) { ?>
+	 		<?php echo "<a href=?page=" . ($page + 2) . ">Next page</a>"; ?>
+	 	<?php } ?>
+
+	 	
+	 	
+	 	
 	 </body>
  </html>
