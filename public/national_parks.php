@@ -17,10 +17,9 @@ $offset = 0;
 
 if (Input::has('page')) {
 	$page = intval(Input::get('page'));
-	$page = $page - 1;
-	$offset = $page * 4;
+	$offset = ($page - 1) * 4;
 } else {
-	$page = 0;
+	$page = 1;
 }
 
 $stmt = $dbc->query(
@@ -47,16 +46,13 @@ $parks = $stmt->fetchAll(PDO::FETCH_ASSOC);
 	 		<br><br>
 	 	<?php } ?>	
 
-	 	<?php if ($page > 0) { ?>
-	 		<?php echo "<a href=?page=" . $page . ">Previous page</a>"; ?>
+	 	<?php if ($page > 1) { ?>
+	 		<?php echo "<a href=?page=" . ($page - 1) . ">Previous page</a>"; ?>
 	 	<?php } ?>
 	 	
-	 	<?php if ($page < 2) { ?>
-	 		<?php echo "<a href=?page=" . ($page + 2) . ">Next page</a>"; ?>
+	 	<?php if ($page < 3) { ?>
+	 		<?php echo "<a href=?page=" . ($page + 1) . ">Next page</a>"; ?>
 	 	<?php } ?>
 
-	 	
-	 	
-	 	
 	 </body>
  </html>
