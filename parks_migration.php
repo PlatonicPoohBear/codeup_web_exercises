@@ -14,7 +14,7 @@ require 'db_connect.php';
 
 
 
-$query = "DROP TABLE IF EXISTS national_parks";
+$query = "DROP TABLE IF EXISTS nation_parks";
 
 $dbc->exec($query);
 
@@ -24,6 +24,7 @@ $query = "CREATE TABLE nation_parks (
 	location VARCHAR(250) NOT NULL,
 	date_established DATE NOT NULL,
 	area_in_acres DOUBLE NOT NULL,
+	description TEXT NOT NULL,
 	PRIMARY KEY (id)
 	)";
 
