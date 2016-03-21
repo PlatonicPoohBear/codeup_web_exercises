@@ -14,6 +14,21 @@ require '../db_connect.php';
 require '../Input.php';
 
 
+if (Input::get('name') != '' && Input::get('location') != '' && Input::get('date_established') != '' && is_numeric(Input::get('area_in_acres')) && Input::get('description') != '') {
+	
+	$stmt = $dbc->prepare('INSERT INTO nation_parks (name, location, date_established, area_in_acres, description) VALUES (:name, :location, :date_established, :area_in_acres, :description)');
+
+	$stmt->bindValue(':name', Input::get('name'), PDO::PARAM_STR);
+	$stmt->bindValue(':location', Input::get('location'), PDO::PARAM_STR);
+	$stmt->bindValue(':date_established', Input::get('date_established'), PDO::PARAM_STR);
+	$stmt->bindValue(':area_in_acres', Input::get('area_in_acres'), PDO::PARAM_STR);
+	$stmt->bindValue(':description', Input::get('description'), PDO::PARAM_STR);
+
+	$stmt->execute();
+}
+
+
+
 $offset = 0;
 
 if (Input::has('page')) {
@@ -23,11 +38,17 @@ if (Input::has('page')) {
 	$page = 1;
 }
 
-$stmt = $dbc->query(
+$stmt = $dbc->prepare(
 	"select *
 	from nation_parks
 	limit 4
-	offset {$offset}");
+	offset :offset");
+
+$stmt->bindValue(':offset', $offset, PDO::PARAM_INT);
+
+$stmt->execute();
+
+
 
 $parks = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
@@ -39,11 +60,31 @@ $parks = $stmt->fetchAll(PDO::FETCH_ASSOC);
 	 	<title>National Parks</title>
 	 </head>
 	 <body>
+	 	
+	 	<form action='national_parks.php' method='post'>
+
+	 		Name:
+	 		<input type='text' name='name'>
+	 		Location:
+	 		<input type='text' name='location'>
+	 		Date Established:
+	 		<input type='text' name='date_established'>
+	 		Area in Acres:
+	 		<input type='text' name='area_in_acres'>
+	 		Description:
+	 		<input type='text' name='description'>
+
+	 		<input type='submit' value='Submit'>
+
+
+	 	</form>
+
 	 	<?php foreach ($parks as $key => $park) { ?>
 	 		<h1><?php echo $park['name'] ?></h1>
 	 		<h5><?php echo $park['location'] ?></h5>
 	 		<h5><?php echo $park['date_established'] ?></h5>
 	 		<h5><?php echo $park['area_in_acres'] ?></h5>
+	 		<h5><?php echo $park['description'] ?></h5>
 	 		<br><br>
 	 	<?php } ?>	
 
@@ -51,9 +92,9 @@ $parks = $stmt->fetchAll(PDO::FETCH_ASSOC);
 	 		<?php echo "<a href=?page=" . ($page - 1) . ">Previous page</a>"; ?>
 	 	<?php } ?>
 	 	
-	 	<?php if ($page < 3) { ?>
-	 		<?php echo "<a href=?page=" . ($page + 1) . ">Next page</a>"; ?>
-	 	<?php } ?>
+	 	
+	 	<?php echo "<a href=?page=" . ($page + 1) . ">Next page</a>"; ?>
+	 	
 
 	 </body>
  </html>
