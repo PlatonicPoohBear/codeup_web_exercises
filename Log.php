@@ -1,20 +1,20 @@
 <?php 
 class Log
 {
-    private static $filename;
-    private static $handle;
+    private $filename;
+    private $handle;
     
     
     public function __construct($prefix = 'log')
     {
-    	self::$filename = "../Log/" . $prefix . date('-y-m-d') . ".log";
-    	self::$handle = fopen(self::$filename, 'a');
+    	$this->setFilename($prefix);
+    	$this->handle = fopen($this->filename, 'a');
     }
     public function logMessage($logLevel, $message)
 	{
 	    date_default_timezone_set('America/Chicago');
 	    $log_entry = date('y-m-d h:i:s') . "[{$logLevel}]" . $message . PHP_EOL;
-	    fwrite(self::$handle, $log_entry);
+	    fwrite($this->handle, $log_entry);
 	}
     
     public function log_error($username) 
@@ -26,9 +26,22 @@ class Log
     {
 		$this->logMessage("INFO", "User {$username} logged in.");
 	}
+
+	public function setFilename($prefix) {
+		$temp = "Log/" . $prefix . date('-y-m-d') . ".log";
+		touch($temp);
+
+		if (is_writable($temp)) {
+			$this->filename = $temp;
+		} else {
+			echo "Error" . PHP_EOL;
+		}
+		
+	}
+	
 	public function __destruct()
 	{
-		fclose(self::$handle);
+		fclose($this->handle);
 	}
     
 }
