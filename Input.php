@@ -24,9 +24,37 @@ class Input
     {
         if (self::has($key)) {
         return $_REQUEST[$key];
-    } else {
+        } else {
         return null;
+        }
     }
+
+    public static function getString($key) {
+        
+        $temp = self::get($key);
+
+        if ($temp == '') {
+            return $temp;
+        } elseif (!is_string($temp) || is_numeric($temp)) {
+            throw new Exception("Value for key '{$key}' is {$temp}, not a valid string");
+        } else {
+            return $temp;
+        }
+
+    }
+
+
+    public static function getNumber($key) {
+        
+        $temp = self::get($key);
+
+        if ($temp == '') {
+            return $temp;
+        } elseif (is_numeric($temp)) {
+            return floatval($temp);
+        } else {
+            throw new Exception("Value for key {$key} is {$temp}, not a valid numeric value.");
+        }
     }
 
     ///////////////////////////////////////////////////////////////////////////
