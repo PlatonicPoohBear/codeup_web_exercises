@@ -14,19 +14,19 @@ require '../db_connect.php';
 require '../Input.php';
 
 
-if (Input::get('name') != '' && Input::get('location') != '' && Input::get('date_established') != '' && is_numeric(Input::get('area_in_acres')) && Input::get('description') != '') {
+if (Input::getString('name') != '' && Input::getString('location') != '' && Input::getString('date_established') != '' && Input::getNumber('area_in_acres') != '' && Input::getString('description') != '') {
 	
 	$stmt = $dbc->prepare('INSERT INTO nation_parks (name, location, date_established, area_in_acres, description) VALUES (:name, :location, :date_established, :area_in_acres, :description)');
 
-	$stmt->bindValue(':name', Input::get('name'), PDO::PARAM_STR);
-	$stmt->bindValue(':location', Input::get('location'), PDO::PARAM_STR);
-	$stmt->bindValue(':date_established', Input::get('date_established'), PDO::PARAM_STR);
-	$stmt->bindValue(':area_in_acres', Input::get('area_in_acres'), PDO::PARAM_STR);
-	$stmt->bindValue(':description', Input::get('description'), PDO::PARAM_STR);
+	$stmt->bindValue(':name', Input::getString('name'), PDO::PARAM_STR);
+	$stmt->bindValue(':location', Input::getString('location'), PDO::PARAM_STR);
+	$stmt->bindValue(':date_established', Input::getString('date_established'), PDO::PARAM_STR);
+	$stmt->bindValue(':area_in_acres', Input::getNumber('area_in_acres'), PDO::PARAM_STR);
+	$stmt->bindValue(':description', Input::getString('description'), PDO::PARAM_STR);
 
 	$stmt->execute();
 }
-
+	
 
 
 $offset = 0;
