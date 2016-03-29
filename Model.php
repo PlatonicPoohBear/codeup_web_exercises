@@ -87,5 +87,5 @@ abstract class Model
      *
      * NOTE: Because this method is abstract, any child class MUST have it defined.
      */
-    protected abstract function update($this->attributes['id']);
+    protected abstract function update();
 }

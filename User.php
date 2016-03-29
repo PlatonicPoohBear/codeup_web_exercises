@@ -9,6 +9,7 @@ class User extends Model
     /** Insert a new entry into the database */
     protected function insert()
     {
+     
         $stmt = self::$dbc->prepare('INSERT INTO users (first_name, last_name, email, password) VALUES (:first_name, :last_name, :email, :password)');
 
         $stmt->bindValue(':first_name', $this->attributes['first_name'], PDO::PARAM_STR);
@@ -56,7 +57,7 @@ class User extends Model
         $stmt->bindValue(':id', $id, PDO::PARAM_STR);
         $stmt->execute();
 
-        $result = $stmt->fetch(PDO::FETCH_ASSOC)
+        $result = $stmt->fetch(PDO::FETCH_ASSOC);
 
         // @TODO: Store the result in a variable named $result
 
@@ -80,6 +81,6 @@ class User extends Model
         $stmt = self::$dbc->prepare("SELECT * FROM users");
         $stmt->execute();
 
-        $result = $stmt->fetchAll(PDO::FETCH_ASSOC)
+        $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 }
