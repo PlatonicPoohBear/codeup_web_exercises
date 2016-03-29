@@ -82,5 +82,15 @@ class User extends Model
         $stmt->execute();
 
         $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+        $instance = null;
+        $array = [];
+        if ($result) {
+            foreach ($result as $key => $value) {
+                $instance = new static($value);
+                $array[] = $instance;
+            }
+        }
+        return $array;
     }
 }
